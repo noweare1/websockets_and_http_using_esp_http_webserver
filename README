@@ -1,0 +1,26 @@
+5/24/2024
+This project uses idf esp_http_webserver which supports websockets.
+This is an attempt to not use libraries outside the espressif or espressif-arduino framework.
+
+a) try running ws_send frame async() (DN)  //will have to save the fd of a previous request to keep sending data - done
+b) readup on applications using this library and websockets. (IP)
+
+c) go through all examples to see how this library is used.(IP)
+
+d) Try opening more instances of browser or postman to test opening multiple sockets - (DN)
+
+e) test out function callbacks. Done, don't know why this is needed system does not do anything
+//typedef esp_err_t (\*httpd_open_func_t)(httpd_handle_t hd, int sockfd); //prototype
+
+    esp_err_t my_open_fn(httpd_handle_t hd, int sockfd)
+{
+    printf("Open Function:\n");
+
+    printf("hd = %p\n", hd);
+
+    printf("sockfd = %d \n\n", sockfd);
+
+    return ESP_OK;
+}
+
+f) Try changing protocol to http from ws and see if it is handled
